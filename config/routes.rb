@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   namespace :user do
+    get 'homes/top'
+    get 'homes/about'
+  end
+  namespace :user do
     get 'items/new'
     get 'items/index'
     get 'items/show'
