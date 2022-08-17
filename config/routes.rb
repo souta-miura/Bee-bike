@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   namespace :user do
+    get 'addresses/index'
+    get 'addresses/edit'
+  end
+  namespace :user do
     get 'orders/new'
     get 'orders/comp'
     get 'orders/index'
