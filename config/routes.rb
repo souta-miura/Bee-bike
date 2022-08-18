@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     get '/about'=>'homes#about'
     
     resources :users, only: [:index, :show, :edit, :update]
-    get 'users/:id/quit'
+    get 'users/:id/quit'=>'users#quit', as: 'users/quit'
     patch 'users/remove'
     
     resources :addresses, only: [:index, :create, :edit, :update, :destroy]
