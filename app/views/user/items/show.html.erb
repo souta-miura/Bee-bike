@@ -1,2 +1,38 @@
-<h1>User::Items#show</h1>
-<p>Find me in app/views/user/items/show.html.erb</p>
+<h3>商品詳細</h3>
+<% if @item.image.attached? %>
+    <%= image_tag @item.image, size: "200x200" %>
+  <% else %>
+    <%= image_tag 'no_image', size: "200x200" %>
+  <% end %>
+  <label>
+    <tr>
+      <td>
+        商品名
+        <%= @item.name %>
+      </td>
+      <td>
+        商品説明
+        <%= @item.description %>
+      </td>
+      <td>
+        ジャンル
+        <%= @item.genre.name if @item.genre %>
+      </td>
+      <td>
+        税込価格
+        ¥<%= (@item.price*1.1).round.to_i %>
+      </td>
+      <td>
+        販売ステータス
+        <% if @item.sale_status=='販売中' %>
+        <div class='label text-success'>販売中</div>
+        <% else %>
+        <div class='label text-secondary'>販売停止中</div>
+        <% end %>
+      </td>
+      <% if @book.user == current_user %>
+            <td><%= link_to '編集', edit_user_item_path(@item), class: "btn btn-sm btn-success edit_user_item_path_#{@item.id}" %></td>
+            <td><%= link_to '削除', @item, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_user_item_#{@item.id}"%></td>
+      <% end %>
+    </tr>
+  </label>

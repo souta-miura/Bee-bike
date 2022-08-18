@@ -15,7 +15,7 @@ class User::UsersController < ApplicationController
   
   def update
     @user.update(user_params)
-    redirect_to user_path(@user.id)
+    redirect_to user_user_path(@user.id)
   end 
 
   def quit
