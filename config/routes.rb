@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
   
+  namespace :user do
+    get 'users/index'
+    get 'users/show'
+    get 'users/edit'
+    get 'users/quit'
+  end
   namespace :admin do
     get 'genres/index'
     get 'genres/edit'
