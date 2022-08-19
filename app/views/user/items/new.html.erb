@@ -27,11 +27,16 @@
         </div>
         <div class='form-group'>
             <%= f.label :税別価格 %>
-            <%= f.text_field :price, class: 'form-control item-price' %>
+            <%= f.text_field :price, class: 'form-control item-price' %>円
         </div>
         <div class='form-group'>
             <%= f.label :販売方法 %>
-            
+            <%= f.radio_button :sale_method, Item.sale_methods.key(0) %>
+            <%= f.label :sale_method, Item.sale_methods_i18n[:引き渡しのみ] %>
+            <%= f.radio_button :sale_method, Item.sale_methods.key(1) %>
+            <%= f.label :sale_method, Item.sale_methods_i18n[:配送のみ] %>
+            <%= f.radio_button :sale_method, Item.sale_methods.key(2) %>
+            <%= f.label :sale_method, Item.sale_methods_i18n[:配送と引き渡し] %>
         </div>
         <div class='form-group'>
             <%= f.label :販売ステータス %>

@@ -3,6 +3,7 @@ class Item < ApplicationRecord
     
     belongs_to :genre
     enum sale_status: { 販売停止中: 0, 販売中: 1 }
+    enum sale_method: { 引き渡しのみ: 0, 配送のみ: 1, 配送と引き渡し: 2 }
     
     validates :name, presence: true
     validates :description, presence: true
