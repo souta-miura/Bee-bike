@@ -1,5 +1,4 @@
 class User::ItemsController < ApplicationController
-  before_action :authenticate_user!
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
   
   def new
@@ -14,6 +13,7 @@ class User::ItemsController < ApplicationController
 
   def index
     @items=Item.all
+    @items=Item.all.page(params[:page]).per(20)
   end
 
   def show

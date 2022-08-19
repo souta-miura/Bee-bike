@@ -27,6 +27,8 @@ Rails.application.routes.draw do
     post 'orders/info'=>'orders#info'
     
     resources :items, only: [:new, :create, :index, :show, :edit, :update]
+    
+    get 'search'=>'searches#search_result'
   end
   
   #管理者用
