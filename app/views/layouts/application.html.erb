@@ -15,13 +15,7 @@
     <%= render 'layouts/header' %>
     <main>
       <div class="d-flex justify-content-center mb-2">
-        <% if user_signed_in? %>
-        <%= render 'user/searches/search' %>
-        <% elsif admin_signed_in? %>
         
-        <% else %>
-        <%= render 'user/searches/search' %>
-        <% end %>
       </div>
       <%= yield %>
     </main>

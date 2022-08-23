@@ -1,13 +1,11 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class='container'>
-        <h1><%= link_to 'Bee bike', root_path %></h1>
             <% if user_signed_in? %>
-                <div class="mx-auto">ようこそ、<%= current_user.last_name %>さん！</div>
             <ul class='nav navbar-nav navbar-right'>
                 <li>
                     <%= link_to user_user_path(current_user.id),class: 'nav-link text-warning' do %>
-                    <i class='fa fa-user'></i> マイページ
+                    <i class='fa fa-user'></i> <%= current_user.last_name %>さんのマイページ
                     <% end %>
                 </li>
                 <li>
@@ -54,4 +52,18 @@
             </ul>
         </div>
     </nav>
+    <div class='navbar navbar-expand-lg navbar-left bg-light'>
+        <div class='container'>
+            <h1><%= link_to 'Bee bike', root_path %></h1>
+            <div class="mx-auto">
+                <% if user_signed_in? %>
+                <%= render 'user/searches/search' %>
+                <% elsif admin_signed_in? %>
+        
+                <% else %>
+                <%= render 'user/searches/search' %>
+                <% end %>
+            </div>
+        </div>
+    </div>
 </header>
