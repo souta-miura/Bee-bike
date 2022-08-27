@@ -3,9 +3,26 @@
         <div class='col-xs-9'>
             <h4>ジャンル編集</h4>
             <%= form_with model: @genre, url: admin_genre_path(@genre.id) do |f| %>
-            <%= f.label :ジャンル %>
+            <%= f.label :メーカー %>
+            <%= f.text_field :maker %>
+            <%= f.label :タイプ %>
             <%= f.text_field :name %>
-            <%= f.submit '変更を保存', class: 'btn btn-success' %>
+            <%= f.label :排気量 %>
+            <%= f.radio_button :exhaust_class, Genre.exhaust_classes.key(0) %>
+            <%= f.label :exhaust_class, Genre.exhaust_classes_i18n[:e50u] %>
+            <%= f.radio_button :exhaust_class, Genre.exhaust_classes.key(1) %>
+            <%= f.label :exhaust_class, Genre.exhaust_classes_i18n[:e125] %>
+            <%= f.radio_button :exhaust_class, Genre.exhaust_classes.key(2) %>
+            <%= f.label :exhaust_class, Genre.exhaust_classes_i18n[:e250] %>
+            <%= f.radio_button :exhaust_class, Genre.exhaust_classes.key(3) %>
+            <%= f.label :exhaust_class, Genre.exhaust_classes_i18n[:e400] %>
+            <%= f.radio_button :exhaust_class, Genre.exhaust_classes.key(4) %>
+            <%= f.label :exhaust_class, Genre.exhaust_classes_i18n[:e750] %>
+            <%= f.radio_button :exhaust_class, Genre.exhaust_classes.key(5) %>
+            <%= f.label :exhaust_class, Genre.exhaust_classes_i18n[:e1000] %>
+            <%= f.radio_button :exhaust_class, Genre.exhaust_classes.key(6) %>
+            <%= f.label :exhaust_class, Genre.exhaust_classes_i18n[:e1000o] %>
+            <%= f.submit '新規登録', class: 'btn btn-success' %>
             <% end %>
         </div>
     </div>

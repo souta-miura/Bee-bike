@@ -25,6 +25,6 @@ class Admin::GenresController < ApplicationController
   private
   
   def genre_params
-    params.require(:genre).permit(:name, :valid_invalid_status)
+    params.require(:genre).permit(:name, :exhaust_class, :maker, :valid_invalid_status)
   end
 end
