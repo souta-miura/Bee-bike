@@ -30,6 +30,12 @@ class User::ItemsController < ApplicationController
     redirect_to user_item_path(@item)
   end
   
+  def destroy
+    @item=Item.find(params[:id])
+    @item.destroy
+    redirect_to user_items_path
+  end
+  
   private
   
   def item_params
