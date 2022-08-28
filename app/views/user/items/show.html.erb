@@ -30,7 +30,7 @@
         <div class='label text-secondary'>販売停止中</div>
         <% end %>
       </td>
-      <% if @book.user == current_user %>
+      <% if @item.user_id == current_user %>
             <td><%= link_to '編集', edit_user_item_path(@item), class: "btn btn-sm btn-success edit_user_item_path_#{@item.id}" %></td>
             <td><%= link_to '削除', @item, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_user_item_#{@item.id}"%></td>
       <% end %>

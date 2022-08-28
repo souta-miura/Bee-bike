@@ -1,27 +1,3 @@
 <div class='container'>
-    <div class='text-center'>
-        <h1>バイクを探す</h1>
-    </div>
-    <div><h3><i class="fa-solid fa-motorcycle"></i>新着バイク</h3></div>
-    <div><h3><i class="fa-solid fa-motorcycle"></i>メーカーから探す</h3></div>
-    <div><h3><i class="fa-solid fa-motorcycle"></i>メーカーから探す</h3></div>
-    <div><h3><i class="fa-solid fa-motorcycle"></i>タイプから探す</h3></div>
-    <div><h3><i class="fa-solid fa-motorcycle"></i>排気量から探す</h3></div>
-<div class='row'>
-    <div class='d-flex flex-wrap'>
-        <% @items.each do |item| %>
-        <div class='box'>
-            <%= link_to public_item_path(item) do %>
-            <% if item.image.attached? %>
-            <%= image_tag item.image, size: "200x200" %>
-            <% else %>
-            <%= image_tag 'no_image', size: "200x200" %>
-            <% end %>
-            <% end %>
-        <p><%= item.name %></p>
-        <p>¥<%= (item.price*1.1).round.to_i %></p>
-        </div>
-    <% end %>
-    </div>
-    <%= paginate @items %>
+    
 </div>

@@ -3,8 +3,51 @@
         <h1>バイクを探す</h1>
     </div>
     <div><h3><i class="fa-solid fa-motorcycle"></i>新着バイク</h3></div>
+    <div class='row'>
+        <div class='d-flex flex-wrap'>
+            <% @item.each do |item| %>
+            <div class='box'>
+            <%= link_to user_item_path(item) do %>
+            <% if item.image.attached? %>
+            <%= image_tag item.image, size: "200x200" %>
+            <% else %>
+            <%= image_tag 'no_image', size: "200x200" %>
+            <% end %>
+            <% end %>
+            <p><%= item.name %></p>
+            <p>本体価格：<%= (item.price*1.1).round.to_i %>円（税込）</p>
+            </div>
+            <% end %>
+        </div>
+    </div>
     <div><h3><i class="fa-solid fa-motorcycle"></i>メーカーから探す</h3></div>
-    <div><h3><i class="fa-solid fa-motorcycle"></i>メーカーから探す</h3></div>
+    <div class='row'>
+        <div class='d-flex flex-wrap'>
+            <% @genres.each do |genre| %>
+            <div class='col'>
+                <%= genre.maker %>
+            </div>
+            <% end %>
+        </div>
+    </div>
     <div><h3><i class="fa-solid fa-motorcycle"></i>タイプから探す</h3></div>
+    <div class='row'>
+        <div class='d-flex flex-wrap'>
+            <% @genres.each do |genre| %>
+            <div class='col'>
+                <%= genre.name %>
+            </div>
+            <% end %>
+        </div>
+    </div>
     <div><h3><i class="fa-solid fa-motorcycle"></i>排気量から探す</h3></div>
+    <div class='row'>
+        <div class='d-flex flex-wrap'>
+            <% @genres.each do |genre| %>
+            <div class='col'>
+                <%= genre.exhaust_class %>
+            </div>
+            <% end %>
+        </div>
+    </div>
 </div>

@@ -1,50 +1,50 @@
 <header>
     <nav class="navbar1 navbar-expand-lg">
         <div class='container'>
-            <% if user_signed_in? %>
             <ul class='nav navbar-nav navbar-right'>
+                <% if user_signed_in? %>
                 <li>
-                    <%= link_to user_user_path(current_user.id),class: 'nav-link text-warning' do %>
+                    <%= link_to user_user_path(current_user.id),class: 'nav-link text-white' do %>
                     <i class='fa fa-user'></i> <%= current_user.last_name %>さんのマイページ
                     <% end %>
                 </li>
                 <li>
-                    <%= link_to user_items_path,class: 'nav-link text-warning' do %>
-                    <i class="fa-solid fa-cake-candles"></i> 商品一覧
+                    <%= link_to new_user_item_path,class: 'nav-link text-white' do %>
+                    <i class="fa-solid fa-motorcycle"></i> 出品
                     <% end %>
                 </li>
                 <li>
                     
                 </li>
                 <li>
-                    <%= link_to destroy_user_session_path, method: :delete,class: 'nav-link text-dark' do %>
+                    <%= link_to destroy_user_session_path, method: :delete,class: 'nav-link text-white' do %>
                     <i class="fa-solid fa-arrow-right-from-bracket"></i> ログアウト
                     <% end %>
                 </li>
                 <% elsif admin_signed_in? %>
-                <li><%= link_to '商品一覧', admin_items_path %></li>
-                <li><%= link_to '会員一覧', admin_users_path %></li>
-                <li><%= link_to '注文履歴一覧', admin_path %></li>
-                <li><%= link_to 'ジャンル一覧', admin_genres_path %></li>
-                <li><%= link_to 'ログアウト',destroy_admin_session_path, method: :delete %></li>
+                <li><%= link_to '商品一覧', admin_items_path,class: 'nav-link text-white' %></li>
+                <li><%= link_to '会員一覧', admin_users_path,class: 'nav-link text-white' %></li>
+                <li><%= link_to '注文履歴一覧', admin_path,class: 'nav-link text-white' %></li>
+                <li><%= link_to 'ジャンル一覧', admin_genres_path,class: 'nav-link text-white' %></li>
+                <li><%= link_to 'ログアウト',destroy_admin_session_path, method: :delete,class: 'nav-link text-white' %></li>
                 <% else %>
                 <li>
-                    <%= link_to user_about_path do %>
+                    <%= link_to user_about_path,class: 'nav-link text-white' do %>
                     <i class="fa-solid fa-info"></i> About
                     <% end %>
                 </li>
                 <li>
-                    <%= link_to user_items_path do %>
-                    <i class="fa-solid fa-cake-candles"></i> 商品一覧
+                    <%= link_to user_items_path,class: 'nav-link text-white' do %>
+                    <i class="fa-solid fa-motorcycle"></i> 商品一覧
                     <% end %>
                 </li>
                 <li>
-                    <%= link_to new_user_registration_path do %>
+                    <%= link_to new_user_registration_path,class: 'nav-link text-white' do %>
                     <i class="fa-solid fa-user-plus"></i> 新規登録
                     <% end %>
                 </li>
                 <li>
-                    <%= link_to new_user_session_path do %>
+                    <%= link_to new_user_session_path,class: 'nav-link text-white' do %>
                     <i class="fa-solid fa-arrow-right-to-bracket"></i> ログイン
                     <% end %>
                 </li>
@@ -71,7 +71,9 @@
                 </div>
             </div>
             <div class='row'>
-                
+                <h4>
+                    掲載数<span style='color:#ff4500;'><!--<= user.items.count %>--></span>件
+                </h4>
             </div>
         </div>
     </div>
