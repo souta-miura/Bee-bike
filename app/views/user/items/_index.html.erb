@@ -1,0 +1,16 @@
+<% items.each do |item| %>
+        <div class='col'>
+            <%= link_to user_item_path(item) do %>
+            <h2><%= item.name %></h2>
+            <% if item.image.attached? %>
+            <%= image_tag item.image, size: "400x400" %>
+            <% else %>
+            <%= image_tag 'no_image', size: "400x400" %>
+            <% end %>
+            <% end %>
+        </div>
+        <div class='col'>
+            <div>本体価格：<h2 style='color:#ff4500;'><%= (item.price*1.1).round.to_i %></h2>円（税込）</div>
+            <div>車両説明：<%= item.description %></div>
+        </div>
+<% end %>

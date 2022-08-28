@@ -1,5 +1,5 @@
 class User::ItemsController < ApplicationController
-  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
+  #before_action :ensure_correct_user, only: [:edit, :update, :destroy]
   
   def new
     @item=Item.new
@@ -7,12 +7,18 @@ class User::ItemsController < ApplicationController
   
   def create
     @item=Item.new(item_params)
-    @item.save
+    @item.user_id=current_user.id
+    if @item.save
     redirect_to user_item_path(@item)
+  else
+    @items=Item.all
+    render 'index'
+  end
   end
 
   def index
     @items=Item.all
+    @genres=Genre.all
     @items=Item.all.page(params[:page]).per(20)
   end
 
@@ -22,6 +28,11 @@ class User::ItemsController < ApplicationController
 
   def edit
     @item=Item.find(params[:id])
+    if @item.user_id=current_user.id
+      render :edit
+    else
+      redirect_to user_items_path
+    end
   end
   
   def update

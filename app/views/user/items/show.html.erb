@@ -1,5 +1,6 @@
-<h3>商品詳細</h3>
-<% if @item.image.attached? %>
+<div class='container'>
+  <h3>商品詳細</h3>
+  <% if @item.image.attached? %>
     <%= image_tag @item.image, size: "200x200" %>
   <% else %>
     <%= image_tag 'no_image', size: "200x200" %>
@@ -20,7 +21,7 @@
       </td>
       <td>
         税込価格
-        ¥<%= (@item.price*1.1).round.to_i %>
+        <%= (@item.price*1.1).round.to_i %>円
       </td>
       <td>
         販売ステータス
@@ -30,9 +31,10 @@
         <div class='label text-secondary'>販売停止中</div>
         <% end %>
       </td>
-      <% if @item.user_id == current_user %>
-            <td><%= link_to '編集', edit_user_item_path(@item), class: "btn btn-sm btn-success edit_user_item_path_#{@item.id}" %></td>
-            <td><%= link_to '削除', @item, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_user_item_#{@item.id}"%></td>
+      <% if @item.user_id == current_user.id %>
+        <td><%= link_to '編集', edit_user_item_path(@item), class: "btn btn-sm btn-success edit_user_item_path_#{@item.id}" %></td>
+        <td><%= link_to '削除', user_item_path(@item), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_user_item_#{@item.id}"%></td>
       <% end %>
     </tr>
   </label>
+</div>

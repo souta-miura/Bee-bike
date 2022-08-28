@@ -10,7 +10,6 @@ class ApplicationController < ActionController::Base
         end
     end
     
-    
     protected
     
     def conigure_permitted_parameters
