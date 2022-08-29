@@ -1,6 +1,6 @@
 <div class='container'>
     <div class='row'>
-        <div class='col-xs-9'>
+        <div class='col'>
             <h4>ジャンル編集</h4>
             <%= form_with model: @genre, url: admin_genre_path(@genre.id) do |f| %>
             <%= f.label :メーカー %>
@@ -22,7 +22,7 @@
             <%= f.label :exhaust_class, Genre.exhaust_classes_i18n[:e1000] %>
             <%= f.radio_button :exhaust_class, Genre.exhaust_classes.key(6) %>
             <%= f.label :exhaust_class, Genre.exhaust_classes_i18n[:e1000o] %>
-            <%= f.submit '新規登録', class: 'btn btn-success' %>
+            <%= f.submit '登録', class: 'btn btn-success' %>
             <% end %>
         </div>
     </div>
