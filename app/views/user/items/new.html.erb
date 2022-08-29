@@ -1,51 +1,59 @@
 <div class='container'>
-<h3>商品新規登録</h3>
+<h2 class='text-center'>商品新規登録</h2>
     <%= form_with model: @item, url: user_items_path do |f| %>
-        <div class='form-group'>
-            <%= f.label :商品画像, class: 'col-xs-3' %>
-            <%= f.file_field :image, accept: "image/*", class: 'col-xs-8' %>
-        </div>
-        <div class='form-group'>
-            <%= f.label :商品名, class: 'col-xs-3' %>
-            <%= f.text_field :name, class: 'col form-control item_name' %>
-        </div>
-        <div class='form-group'>
-            <%= f.label :商品説明 %>
-            <%= f.text_area :description, class: 'form-control item_description' %>
-        </div>
-        <div class='form-group'>
-            <%= f.label :メーカー %>
-            <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :maker), include_blank: '--選択してください--' %>
-        </div>
-        <div class='form-group'>
-            <%= f.label :車両タイプ %>
-            <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name), include_blank: '--選択してください--' %>
-        </div>
-        <div class='form-group'>
-            <%= f.label :排気量 %>
-            <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :exhaust_class), include_blank: '--選択してください--' %>
-        </div>
-        <div class='form-group'>
-            <%= f.label :税別価格 %>
-            <%= f.text_field :price, class: 'form-control item-price' %>円
-        </div>
-        <div class='form-group'>
-            <%= f.label :販売方法 %>
-            <%= f.radio_button :sale_method, Item.sale_methods.key(0) %>
-            <%= f.label :sale_method, Item.sale_methods_i18n[:引き渡しのみ] %>
-            <%= f.radio_button :sale_method, Item.sale_methods.key(1) %>
-            <%= f.label :sale_method, Item.sale_methods_i18n[:配送のみ] %>
-            <%= f.radio_button :sale_method, Item.sale_methods.key(2) %>
-            <%= f.label :sale_method, Item.sale_methods_i18n[:配送と引き渡し] %>
-        </div>
-        <div class='form-group'>
-            <%= f.label :販売ステータス %>
-            <%= f.radio_button :sale_status, Item.sale_statuses.key(1) %>
-            <%= f.label :sale_status, Item.sale_statuses_i18n[:販売中], class: 'text-success' %>
-            <%= f.radio_button :sale_status, Item.sale_statuses.key(0) %>
-            <%= f.label :sale_status, Item.sale_statuses_i18n[:販売停止中], class: 'text-secondary' %>
-        </div>
-        <div class='form-group'>
-        <%= f.submit :新規登録, class: 'btn btn-success' %>
-        </div>
+        <table class='table'>
+            <tr>
+                <th><%= f.label :商品画像, class: 'col-xs-3' %></th>
+                <th><%= f.file_field :image, accept: "image/*", class: 'col-xs-8' %></th>
+            </tr>
+            <tr>
+                <th><%= f.label :商品名, class: 'col-xs-3' %></th>
+                <th><%= f.text_field :name, class: 'col form-control item_name' %></th>
+            </tr>
+            <tr>
+                <th><%= f.label :商品説明 %></th>
+                <th><%= f.text_area :description, class: 'form-control item_description' %></th>
+            </tr>
+            <tr>
+                <th><%= f.label :メーカー名 %></th>
+                <th><%= f.select :maker_id, options_from_collection_for_select(Maker.all, :id, :name), include_blank: '--メーカーを選択してください--' %></th>
+            </tr>
+            <tr>
+                <th><%= f.label :車体タイプ %></th>
+                <th><%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name), include_blank: '--タイプを選択してください--' %></th>
+            </tr>
+            <tr>
+                <th><%= f.label :排気量 %></th>
+                <th><%= f.select :cc_class_id, options_from_collection_for_select(CcClass.all, :id, :name), include_blank: '--排気量を選択してください--' %></th>
+            </tr>
+            <tr>
+                <th><%= f.label :税別価格 %></th>
+                <th><%= f.text_field :price, class: 'form-control item-price' %>円</th>
+            </tr>
+            <tr>
+                <th><%= f.label :販売方法 %></th>
+                <th>
+                    <%= f.radio_button :sale_method, Item.sale_methods.key(0) %>
+                    <%= f.label :sale_method, Item.sale_methods_i18n[:引き渡しのみ] %>
+                    <%= f.radio_button :sale_method, Item.sale_methods.key(1) %>
+                    <%= f.label :sale_method, Item.sale_methods_i18n[:配送のみ] %>
+                    <%= f.radio_button :sale_method, Item.sale_methods.key(2) %>
+                    <%= f.label :sale_method, Item.sale_methods_i18n[:配送と引き渡し] %>
+                </th>
+            </tr>
+            <tr>
+                <th><%= f.label :販売ステータス %></th>
+                <th>
+                    <%= f.radio_button :sale_status, Item.sale_statuses.key(1) %>
+                    <%= f.label :sale_status, Item.sale_statuses_i18n[:販売中], class: 'text-success' %>
+                    <%= f.radio_button :sale_status, Item.sale_statuses.key(0) %>
+                    <%= f.label :sale_status, Item.sale_statuses_i18n[:販売停止中], class: 'text-secondary' %>
+                </th>
+            </tr>
+            <tr>
+                <th><%= f.submit :新規登録, class: 'btn btn-success' %></th>
+            </tr>
+        </table>
     <% end %>
+</div>
+        

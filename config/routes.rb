@@ -22,11 +22,15 @@ Rails.application.routes.draw do
     
     resources :addresses, only: [:index, :create, :edit, :update, :destroy]
     
+    resources :makers, only: [:show]
+    resources :genres, only: [:show]
+    resources :cc_classes, only: [:show]
+    
     resources :orders, only: [:new, :create, :index, :show]
     get 'orders/:id/comp'=>'orders#comp'
     post 'orders/info'=>'orders#info'
     
-    resources :items, only: [:new, :create, :index, :show, :edit, :update, :destroy]
+    resources :items, only: [:new, :create, :index, :edit, :update, :destroy]
     
     get 'search'=>'searches#search_result'
   end

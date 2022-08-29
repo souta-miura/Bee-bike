@@ -25,9 +25,11 @@
     <div class='mt-4'><h3 class='font-weight-bolder'><i class="fa-solid fa-motorcycle"></i> メーカーから探す</h3></div>
     <div class='row'>
         <div class='d-flex flex-wrap'>
-            <% @genres.each do |genre| %>
-            <div class='col'>
-                
+            <% @makers.each do |maker| %>
+            <div class='col-md-6'>
+                <%= link_to user_maker_path(maker),class: 'outline-primary' do %>
+                <h4>・<%= maker.name %></h4>
+                <% end %>
             </div>
             <% end %>
         </div>
@@ -36,8 +38,10 @@
     <div class='row'>
         <div class='d-flex flex-wrap'>
             <% @genres.each do |genre| %>
-            <div class='col'>
-                <%= genre.name %>
+            <div class='col-md-6'>
+                <%= link_to user_genre_path(genre),class: 'outline-primary' do %>
+                <h4>・<%= genre.name %></h4>
+                <% end %>
             </div>
             <% end %>
         </div>
@@ -45,9 +49,11 @@
     <div class='mt-4'><h3 class='font-weight-bolder'><i class="fa-solid fa-motorcycle"></i> 排気量から探す</h3></div>
     <div class='row'>
         <div class='d-flex flex-wrap'>
-            <% @genres.each do |genre| %>
-            <div class='col'>
-                
+            <% @cc_classes.each do |cc_class| %>
+            <div class='col-md-6'>
+                <%= link_to user_cc_class_path(cc_class),class: 'outline-primary' do %>
+                <h4>・<%= cc_class.name %></h4>
+                <% end %>
             </div>
             <% end %>
         </div>

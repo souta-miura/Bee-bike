@@ -4,6 +4,11 @@
             <ul class='nav navbar-nav navbar-right'>
                 <% if user_signed_in? %>
                 <li>
+                    <%= link_to root_path,class: 'nav-link text-white' do %>
+                    <i class="fa-solid fa-magnifying-glass"></i> バイクを探す
+                    <% end %>
+                </li>
+                <li>
                     <%= link_to user_user_path(current_user.id),class: 'nav-link text-white' do %>
                     <i class='fa fa-user'></i> <%= current_user.last_name %>さんのマイページ
                     <% end %>
@@ -12,9 +17,6 @@
                     <%= link_to new_user_item_path,class: 'nav-link text-white' do %>
                     <i class="fa-solid fa-motorcycle"></i> 出品
                     <% end %>
-                </li>
-                <li>
-                    
                 </li>
                 <li>
                     <%= link_to destroy_user_session_path, method: :delete,class: 'nav-link text-white' do %>
@@ -69,7 +71,7 @@
             </div>
             <% elsif admin_signed_in? %>
             <div class='row'>
-                <a href='admin'>
+                <a href=''>
                     <h1><span style='color:#ff4500;'>Bee</span> <span style='color:#696969;'>bike</span></h1>
                 </a>
             </div>
@@ -97,13 +99,4 @@
             </div>
         </div>
     </div>
-    <nav aria-label="Breadcrumb" class="breadcrumb">
-    <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="#">Category</a></li>
-        <li><a href="#">Sub Category</a></li>
-        <li><a href="#">Type</a></li>
-        <li><span aria-current="page">Product</span></li>
-    </ul>
-    </nav>
 </header>
