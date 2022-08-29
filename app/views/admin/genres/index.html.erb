@@ -1,53 +1,30 @@
 <div class='container'>
     <div class='row'>
-        <h4 style='margin:20px;'>ジャンル一覧・追加</h4>
+        <div class='text-center' ><h4 style='margin:20px;'>車体タイプ一覧・追加</h4></div>
         <%= form_with model: @genre, url: admin_genres_path do |f| %>
         <div class='row' style='margin:20px;'>
             <div>
-                <%= f.label :メーカー %>
-                <%= f.text_field :maker %>
-            </div>
-            <div>
-                <%= f.label :タイプ %>
+                <%= f.label :タイプ名 %>
                 <%= f.text_field :name %>
             </div>
-            <div>
-                <%= f.label :排気量 %>
-                <%= f.radio_button :exhaust_class, Genre.exhaust_classes.key(0) %>
-                <%= f.label :exhaust_class, Genre.exhaust_classes_i18n[:e50u] %>
-                <%= f.radio_button :exhaust_class, Genre.exhaust_classes.key(1) %>
-                <%= f.label :exhaust_class, Genre.exhaust_classes_i18n[:e125] %>
-                <%= f.radio_button :exhaust_class, Genre.exhaust_classes.key(2) %>
-                <%= f.label :exhaust_class, Genre.exhaust_classes_i18n[:e250] %>
-                <%= f.radio_button :exhaust_class, Genre.exhaust_classes.key(3) %>
-                <%= f.label :exhaust_class, Genre.exhaust_classes_i18n[:e400] %>
-                <%= f.radio_button :exhaust_class, Genre.exhaust_classes.key(4) %>
-                <%= f.label :exhaust_class, Genre.exhaust_classes_i18n[:e750] %>
-                <%= f.radio_button :exhaust_class, Genre.exhaust_classes.key(5) %>
-                <%= f.label :exhaust_class, Genre.exhaust_classes_i18n[:e1000] %>
-                <%= f.radio_button :exhaust_class, Genre.exhaust_classes.key(6) %>
-                <%= f.label :exhaust_class, Genre.exhaust_classes_i18n[:e1000o] %>
-            </div>
-            <%= f.submit '新規登録', class: 'btn btn-success' %>
+            <%= f.submit 'タイプ名を追加', class: 'btn btn-primary' %>
         </div>
         <% end %>
     </div>
     <table class='table'>
         <thead>
             <tr>
-                <th>メーカー</th>
-                <th>タイプ</th>
-                <th>排気量</th>
+                <th>管理.No</th>
+                <th>タイプ名</th>
                 <th></th>
-                <th></th>
+                <th><h4>現在<span style='color:#ff4500;'><%= Genre.count %></span>種</h4></th>
             </tr>
         </thead>
         <tbody>
             <% @genres.each do |genre| %>
             <tr>
-                <td><%= genre.maker %></td>
+                <td><%= genre.id %></td>
                 <td><%= genre.name %></td>
-                <td><%= genre.exhaust_class %></td>
                 <td><%= link_to '編集する', edit_admin_genre_path(genre.id), class: 'btn btn-success' %></td>
                 <td><%= link_to '削除する', admin_genre_path(genre.id), method: :delete, class: 'btn btn-danger' %></td>
             </tr>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_16_052440) do
+ActiveRecord::Schema.define(version: 2022_08_29_172413) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -61,22 +61,41 @@ ActiveRecord::Schema.define(version: 2022_08_16_052440) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "cc_classes", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "genres", force: :cascade do |t|
     t.string "name"
-    t.integer "exhaust_class", default: 0
-    t.string "maker"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "item_genres", force: :cascade do |t|
+    t.integer "item_id"
+    t.integer "genre_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "items", force: :cascade do |t|
-    t.integer "genre_id"
     t.integer "user_id"
     t.string "name"
     t.text "description"
     t.integer "price"
     t.integer "sale_method", default: 0
     t.integer "sale_status", default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "genre_id"
+    t.integer "maker_id"
+    t.integer "cc_class_id"
+  end
+
+  create_table "makers", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

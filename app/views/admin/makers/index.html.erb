@@ -1,0 +1,35 @@
+<div class='container'>
+    <div class='row'>
+        <h4 style='margin:20px;'>メーカー名一覧・追加</h4>
+        <%= form_with model: @maker, url: admin_makers_path do |f| %>
+        <div class='row' style='margin:20px;'>
+            <div>
+                <%= f.label :メーカー名 %>
+                <%= f.text_field :name %>
+            </div>
+            <%= f.submit 'メーカーを追加', class: 'btn btn-primary' %>
+        </div>
+        <% end %>
+    </div>
+    <table class='table'>
+        <thead>
+            <tr>
+                <th>管理.No</th>
+                <th>メーカー名</th>
+                <th></th>
+                <th><h4>現在<span style='color:#ff4500;'><%= Maker.count %></span>社</h4></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @makers.each do |maker| %>
+            <tr>
+                <td><%= maker.id %></td>
+                <td><%= maker.name %></td>
+                <td><%= link_to '編集する', edit_admin_maker_path(maker.id), class: 'btn btn-success' %></td>
+                <td><%= link_to '削除する', admin_maker_path(maker.id), method: :delete, class: 'btn btn-danger' %></td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+    <%= paginate @makers %>
+</div>

@@ -1,0 +1,35 @@
+<div class='container'>
+    <div class='row'>
+        <h4 style='margin:20px;'>排気量一覧・追加</h4>
+        <%= form_with model: @cc_class, url: admin_cc_classes_path do |f| %>
+        <div class='row' style='margin:20px;'>
+            <div>
+                <%= f.label :排気量 %>
+                <%= f.text_field :name %>
+            </div>
+            <%= f.submit '排気量を追加', class: 'btn btn-primary' %>
+        </div>
+        <% end %>
+    </div>
+    <table class='table'>
+        <thead>
+            <tr>
+                <th>管理.No</th>
+                <th>排気量</th>
+                <th></th>
+                <th><h4>現在<span style='color:#ff4500;'><%= CcClass.count %></span>クラス</h4></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @cc_classes.each do |cc_class| %>
+            <tr>
+                <td><%= cc_class.id %></td>
+                <td><%= cc_class.name %></td>
+                <td><%= link_to '編集する', edit_admin_cc_class_path(cc_class.id), class: 'btn btn-success' %></td>
+                <td><%= link_to '削除する', admin_cc_class_path(cc_class.id), method: :delete, class: 'btn btn-danger' %></td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+    <%= paginate @cc_classes %>
+</div>

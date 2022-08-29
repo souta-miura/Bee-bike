@@ -1,9 +1,9 @@
 <div class='container'>
     <div class='row'>
         <div class='col'>
-            <h4>タイプ名編集</h4>
-            <%= form_with model: @genre, url: admin_genre_path(@genre.id) do |f| %>
-            <%= f.label :タイプ名 %>
+            <h4>排気量編集</h4>
+            <%= form_with model: @cc_class, url: admin_cc_class_path(@cc_class.id) do |f| %>
+            <%= f.label :排気量 %>
             <%= f.text_field :name %>
             <%= f.submit '編集完了', class: 'btn btn-success' %>
             <% end %>

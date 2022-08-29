@@ -36,8 +36,10 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show, :edit, :update]
     
     resources :genres, only: [:index, :create, :edit, :update, :destroy]
+    resources :makers, only: [:index, :create, :edit, :update, :destroy]
+    resources :cc_classes, only: [:index, :create, :edit, :update, :destroy]
     
-    resources :items, only: [:index, :show, :edit, :update]
+    resources :items, only: [:index, :show, :edit, :update, :destroy]
   end
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

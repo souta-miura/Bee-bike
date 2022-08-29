@@ -5,23 +5,23 @@ class User::OrdersController < ApplicationController
   
   def info
     #情報確認画面
-    @cart_items = current_customer.cart_items
+    @items = current_user.items
     @order = Order.new(order_params)
     #@order.billing_amount = ordered_price + shipping
     if params[:order][:select_address] == "0"
       @order = Order.new(order_params)
-      @order.ordered_postal_code = current_customer.postal_code
-      @order.ordered_address = current_customer.address
-      @order.receriver_name = current_customer.first_name + current_customer.last_name
+      @order.postal_code = current_user.postal_code
+      @order.address = current_user.address
+      @order.name = current_user.first_name + current_user.last_name
     elsif params[:order][:select_address] == "1"
       @order = Order.new(order_params)
-      @order.ordered_postal_code = @address.postal_code
-      @order.ordered_address = @address.address
-      @order.receriver_name = @address.name
+      @order.postal_code = @address.postal_code
+      @order.address = @address.address
+      @order.name = @address.name
     elsif params[:order][:select_address] == "2"
-      @order.ordered_postal_code = ordered.postal_code
-      @order.ordered_address = ordered.address
-      @order.receriver_name = ordered.name
+      @order.postal_code = ordered.postal_code
+      @order.address = ordered.address
+      @order.name = ordered.name
     else
       flash[:notice] = "errer"
       render :new
@@ -50,7 +50,7 @@ class User::OrdersController < ApplicationController
   end
 
   def index
-    @orders = current_customer.orders
+    @orders = current_user.orders
   end
 
   def show
@@ -60,6 +60,6 @@ class User::OrdersController < ApplicationController
   
   private
   def order_params
-    params.require(:order).permit(:payment_method, :ordered_postal_code, :ordered_address, :receriver_name)
+    params.require(:order).permit(:payment_method, :postal_code, :address, :name)
   end
 end
