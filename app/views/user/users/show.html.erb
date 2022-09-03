@@ -28,10 +28,19 @@
                     <th>メールアドレス</th>
                     <th><%= @user.email %></th>
                 </tr>
+                <tr>
+                    <th></th>
+                    <th><%= link_to '編集する', edit_user_user_path(@user.id), class: 'btn btn-outline-success btn-block' %></th>
+                </tr>
+                <tr>
+                    <th>配送先</th>
+                    <th><%= link_to '一覧を見る', user_addresses_path, class: 'btn btn-primary' %></th>
+                </tr>
+                <tr>
+                    <th>注文履歴</th>
+                    <th><%= link_to '一覧を見る', user_orders_path, class: 'btn btn-primary' %></th>
+                </tr>
             </table>
-            <div class='row'>
-                <%= link_to '編集する', edit_user_user_path(@user.id), class: 'btn btn-outline-success btn-block' %>
-            </div>
         </div>
         <div class='col-md-7 offset-md-1'>
             <h4>商品管理</h4>
@@ -52,13 +61,5 @@
         </div>
         <% end %>
         </div>
-    </div>
-    
-    
-    <div class='row'>
-        <p><strong>配送先　　　　　</strong><%= link_to '一覧を見る', user_addresses_path, class: 'btn btn-primary' %></p>
-    </div>
-    <div class='row'>
-        <p><strong>注文履歴　　　　</strong><%= link_to '一覧を見る', user_orders_path, class: 'btn btn-primary' %></p>
     </div>
 </div>

@@ -1,45 +1,74 @@
 <div class='container'>
-  <h3>商品詳細</h3>
-  <% if @item.image.attached? %>
-    <%= image_tag @item.image, size: "200x200" %>
-  <% else %>
-    <%= image_tag 'no_image', size: "200x200" %>
-  <% end %>
-  <label>
-    <tr>
-      <td>
-        商品名
-        <%= @item.name %>
-      </td>
-      <td>
-        商品説明
-        <%= @item.description %>
-      </td>
-      <td>
-        ジャンル
-        <%= @item.genre.name if @item.genre %>
-      </td>
-      <td>
-        税込価格
-        <%= (@item.price*1.1).round.to_i %>円
-      </td>
-      <td>
-        販売ステータス
-        <% if @item.sale_status=='販売中' %>
-        <div class='label text-success'>販売中</div>
-        <% else %>
-        <div class='label text-secondary'>販売停止中</div>
+  <div class='row'>
+    <div class='col-md-7'>
+      <h3>
+        <%= link_to user_user_path(@item) do %>
+        <%= @item.user.last_name %>
         <% end %>
-      </td>
-      <% if @item.user_id == current_user.id %>
-        <td><%= link_to '編集', edit_user_item_path(@item), class: "btn btn-sm btn-success edit_user_item_path_#{@item.id}" %></td>
-        <td><%= link_to '削除', user_item_path(@item), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_user_item_#{@item.id}"%></td>
+      </h3>
+      <h4><%= @item.maker.name %></h4>
+      <h2><%= @item.name %></h2>
+      <% if @item.image.attached? %>
+      <%= image_tag @item.image, size: "600x600" %>
+      <% else %>
+      <%= image_tag 'no_image', size: "600x600" %>
       <% end %>
-    </tr>
-  </label>
+    </div>
+    <div class='col-md-5'>
+      <div class='text-center'>
+        <h2>税込価格</h2>
+        <font size='7' color='#ff0000'><%= (@item.price*1.1).round.to_i %></font>円
+      </div>
+      <h2>基本情報</h2>
+      <table class='table table-bordered'>
+        <tr>
+          <th>年式（年）</th>
+          <th><%= @item.year %></th>
+        </tr>
+        <tr>
+          <th>走行距離（km）</th>
+          <th><%= @item.km %></th>
+        </tr>
+        <tr>
+          <th>排気量（cc）</th>
+          <th><%= @item.cc %></th>
+        </tr>
+        <tr>
+          <th>カラー</th>
+          <th><%= @item.color %></th>
+        </tr>
+        <tr>
+          <th>製造国</th>
+          <th><%= @item.country %></th>
+        </tr>
+      </table>
+      <h2>説明・紹介</h2>
+      <div>
+        <%= @item.description %>
+      </div>
+      <tr>
+        <th>
+          <% if @item.sale_status=='販売中' %>
+          <div class='label text-success'>販売中</div>
+          <% else %>
+          <div class='label text-secondary'>販売停止中</div>
+          <% end %>
+        </th>
+      </tr>
+        
+        <% if @item.user_id == current_user.id %>
+        <th><%= link_to '編集', edit_user_item_path(@item), class: "btn btn-sm btn-success edit_user_item_path_#{@item.id}" %></th>
+        <th><%= link_to '削除', user_item_path(@item), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_user_item_#{@item.id}"%></th>
+        <% end %>
+      </tr>
+      
+    </div>
+  
   <div class='row'>
     <% if @item.user_id != current_user.id %>
     <%= link_to '情報入力に進む', new_user_order_path, class: 'btn btn-success' %>
     <% end %>
   </div>
+  </div>
+  
 </div>

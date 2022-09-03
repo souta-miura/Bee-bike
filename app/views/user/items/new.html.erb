@@ -11,6 +11,26 @@
                 <th><%= f.text_field :name, class: 'col form-control item_name' %></th>
             </tr>
             <tr>
+                <th><%= f.label :排気量 %></th>
+                <th><%= f.text_field :cc, class: 'form-control item_cc' %></th>
+            </tr>
+            <tr>
+                <th><%= f.label :年式 %></th>
+                <th><%= f.text_field :year, class: 'form-control item_year' %></th>
+            </tr>
+            <tr>
+                <th><%= f.label :走行距離 %></th>
+                <th><%= f.text_field :km, class: 'form-control item_km' %></th>
+            </tr>
+            <tr>
+                <th><%= f.label :カラー %></th>
+                <th><%= f.text_field :color, class: 'form-control item_color' %></th>
+            </tr>
+            <tr>
+                <th><%= f.label :製造国 %></th>
+                <th><%= f.text_field :country, class: 'form-control item_country' %></th>
+            </tr>
+            <tr>
                 <th><%= f.label :商品説明 %></th>
                 <th><%= f.text_area :description, class: 'form-control item_description' %></th>
             </tr>
@@ -23,12 +43,12 @@
                 <th><%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name), include_blank: '--タイプを選択してください--' %></th>
             </tr>
             <tr>
-                <th><%= f.label :排気量 %></th>
+                <th><%= f.label :排気量クラス %></th>
                 <th><%= f.select :cc_class_id, options_from_collection_for_select(CcClass.all, :id, :name), include_blank: '--排気量を選択してください--' %></th>
             </tr>
             <tr>
-                <th><%= f.label :税別価格 %></th>
-                <th><%= f.text_field :price, class: 'form-control item-price' %>円</th>
+                <th><%= f.label :税別価格(円) %></th>
+                <th><%= f.text_field :price, class: 'form-control item-price' %></th>
             </tr>
             <tr>
                 <th><%= f.label :販売方法 %></th>
@@ -51,7 +71,7 @@
                 </th>
             </tr>
             <tr>
-                <th><%= f.submit :新規登録, class: 'btn btn-success' %></th>
+                <th><%= f.submit '新規出品', class: 'btn btn-success' %></th>
             </tr>
         </table>
     <% end %>
