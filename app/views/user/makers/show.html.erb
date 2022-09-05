@@ -1,2 +1,6 @@
-<h1>User::Makers#show</h1>
-<p>Find me in app/views/user/makers/show.html.erb</p>
+<div class='container'>
+    <h2><%= @maker.name %>のバイク一覧</h2>
+    <% @maker.items.each do |item| %>
+    <%= item.name %>
+    <% end %>
+</div>
