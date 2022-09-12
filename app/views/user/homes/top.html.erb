@@ -5,7 +5,7 @@
     <div class='mt-4'><h3 class='font-weight-bolder'><i class="fa-solid fa-motorcycle"></i> 新着バイク</h3></div>
     <div class='row'>
         <div class='d-flex flex-wrap'>
-            <% @item.each do |item| %>
+            <% @items.each do |item| %>
             <div class="card mx-2 shadow-lg">
             <div class='card-body'>
             <%= link_to user_item_path(item) do %>
