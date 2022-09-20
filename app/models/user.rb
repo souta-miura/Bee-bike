@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :addresses, dependent: :destroy
   has_many :items, dependent: :destroy
   has_many :orders, dependent: :destroy
+  has_many :item_comments, dependent: :destroy
   has_one_attached :profile_image
   
   validates :last_name, presence: true

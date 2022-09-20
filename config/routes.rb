@@ -30,7 +30,9 @@ Rails.application.routes.draw do
     get 'orders/:id/comp'=>'orders#comp'
     post 'orders/info'=>'orders#info'
     
-    resources :items, only: [:new, :create, :index, :show, :edit, :update, :destroy]
+    resources :items, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
+      resources :item_comments, only: [:create, :destroy]
+    end
     
     get 'search'=>'searches#search_result'
   end

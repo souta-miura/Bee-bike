@@ -1,0 +1,4 @@
+<%= form_with model: [item, @item_comments], url: user_item_item_comments_path(item.id) do |f| %>
+<%= f.text_area :item_comment %>
+<%= f.submit '送信', class: 'btn btn-success'%>
+<% end %>

@@ -55,7 +55,8 @@
           <% end %>
         </th>
       </tr>
-      <h4></h4>
+      <%= render 'user/item_comments/item_comm', item: @item %>
+      <%= render 'user/item_comments/form', item: @item, item_comments: @item_comments %>
       <tr>
         <% if @item.user_id == current_user %>
         <th><%= link_to '編集', edit_user_item_path(@item), class: "btn btn-sm btn-success edit_user_item_path_#{@item.id}" %></th>

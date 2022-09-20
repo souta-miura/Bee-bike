@@ -1,0 +1,16 @@
+<h4>コメント欄</h4>
+  <table>
+    <tbody>
+      <% item.item_comments.each do |item_comment| %>
+      <tr>
+        <td><%= item_comment.user.name %></td>
+        <td><%= item_comments.item_comment %></td>
+        <td>
+          <% if item_comment.user == current_user %>
+          <%= link_to '削除', user_item_item_comment_path(item_comment.item, item_comment), method: :delete, class: 'btn btn-danger'%>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
