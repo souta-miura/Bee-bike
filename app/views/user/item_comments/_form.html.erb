@@ -1,4 +1,6 @@
-<%= form_with model: [@item, @item_comment], url: user_item_item_comments_path(@item) do |f| %>
-<%= f.text_area :item_comment %>
-<%= f.submit '送信', class: 'btn btn-success'%>
-<% end %>
+<div>
+    <%= form_with model: [@item, @item_comment], url: user_item_item_comments_path(@item) do |f| %>
+    <%= f.text_area :item_comment, cols: '50', placeholder: "コメントを記入"  %>
+    <%= f.submit '送信', class: 'btn btn-success'%>
+    <% end %>
+</div>
