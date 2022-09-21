@@ -24,6 +24,7 @@ class User::ItemsController < ApplicationController
 
   def show
     @item=Item.find(params[:id])
+    @item_comment=ItemComment.new
   end
 
   def edit
