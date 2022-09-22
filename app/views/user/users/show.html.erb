@@ -1,6 +1,7 @@
 <div class='container'>
-    <h2 class='text-center'>マイページ</h2>
+    <h2><%= @user.last_name %></h2>
     <div class='row'>
+        <% if @user == current_user %>
         <div class='col-md-4'>
             <h4 style='margin:10px;'>登録情報</h4>
             <table class='table'>
@@ -42,8 +43,9 @@
                 </tr>
             </table>
         </div>
+        <% end %>
         <div class='col-md-7 offset-md-1'>
-            <h4>商品管理</h4>
+            <h4><%= @user.last_name %>さんの出品リスト</h4>
         <% @items.each do |item| %>
         <div class='col'>
             <%= link_to user_item_path(item) do %>
