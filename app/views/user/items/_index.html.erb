@@ -1,16 +1,49 @@
-<% items.each do |item| %>
-        <div class='col'>
+<div class='container'>
+    <div class='row'>
+        <div class='col-md-8'>
+            <h2>掲載バイク一覧</h2>
+        </div>
+        <div class='col-md-4 text-right'>
+            <h1><span style='color:#ff4500;'><%= Item.count %></span>台</h1>
+        </div>
+    </div>
+    <% items.each do |item| %>
+    <div class='row border-top border-bottom border-secondary'>
+        <div class='col-md-3'>
+            <%= link_to user_item_path(item) do %>
+            <% if item.image.attached? %>
+            <%= image_tag item.image, size: "200x200" %>
+            <% else %>
+            <%= image_tag 'assets/images/ネイキッド.png', size: "200x200" %>
+            <% end %>
+            <% end %>
+        </div>
+        <div class='col-md-5'>
             <%= link_to user_item_path(item) do %>
             <h2><%= item.name %></h2>
-            <% if item.image.attached? %>
-            <%= image_tag item.image, size: "400x400" %>
-            <% else %>
-            <%= image_tag 'no_image', size: "400x400" %>
             <% end %>
+            <div><%= item.description %></div>
+            <div>税込価格</div>
+            <font size='7' color='#ff0000'><%= (item.price*1.1).round.to_i %></font>円
+        </div>
+        <div class='col-md-4'>
+            <div class='text-center'>
+                <h4>排気量：<%= item.cc %>cc</h4>
+                <h4>年式：<%= item.year %></h4>
+                <h4>走行距離：<%= item.km %>km</h4>
+            </div>
+        </div>
+    </div>
+    <div class='row border-bottom border-secondary'>
+        <div class='col-md-8'>
+            <%= link_to user_user_path(item) do %>
+            <h4><%= item.user.last_name %></h4>
             <% end %>
         </div>
-        <div class='col'>
-            <div>本体価格：<h2 style='color:#ff4500;'><%= (item.price*1.1).round.to_i %></h2>円（税込）</div>
-            <div>車両説明：<%= item.description %></div>
+        <div class='col-md-4'>
+            連絡先・電話番号
+            <%= item.user.phone_number %>
         </div>
-<% end %>
+    </div>
+    <% end %>
+</div>
