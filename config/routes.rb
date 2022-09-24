@@ -35,6 +35,7 @@ Rails.application.routes.draw do
     post 'orders/info'=>'orders#info'
     
     resources :items, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
+      resource :favorites, only: [:create, :destroy]
       resources :item_comments, only: [:create, :destroy]
     end
     
