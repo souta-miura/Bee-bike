@@ -12,6 +12,9 @@
             <% end %>
         </div>
         <% end %>
+        <div class='col-md-4'>
+            <p><%=link_to"お気に入り記事",favorites_user_user_path(@user) %></p>
+        </div>
     </div>
     <% if @user == current_user %>
     <div class='row'>

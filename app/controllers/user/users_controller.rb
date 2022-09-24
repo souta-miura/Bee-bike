@@ -22,6 +22,12 @@ class User::UsersController < ApplicationController
   def quit
   end
   
+  def favorites
+    @user=User.find(params[:id])
+    favorites=Favorite.where(user_id: @user.id).pluck(:item_id)
+    @favorite_items=Item.find(favorites)
+  end
+  
   def remove
     current_user.update(is_deleted: true)
     reset_session
