@@ -8,18 +8,19 @@
         </div>
     </div>
     <% @cc_class.items.each do |item| %>
-    <div class='row border-top border-bottom border-secondary'>
+    <div class='row py-2 border-top border-bottom border-secondary'>
         <div class='col-md-3'>
             <%= link_to user_item_path(item) do %>
             <% if item.image.attached? %>
             <%= image_tag item.image, size: "200x200" %>
             <% else %>
-            <%= image_tag 'no_image', size: "200x200" %>
+            <%= image_tag 'assets/images/ネイキッド.png', size: "200x200" %>
             <% end %>
             <% end %>
         </div>
         <div class='col-md-5'>
             <%= link_to user_item_path(item) do %>
+            <h4><%= item.maker.name %></h4>
             <h2><%= item.name %></h2>
             <% end %>
             <div><%= item.description %></div>
@@ -27,17 +28,25 @@
             <font size='7' color='#ff0000'><%= (item.price*1.1).round.to_i %></font>円
         </div>
         <div class='col-md-4'>
-            <div class='text-center'>
-                <h4>排気量：<%= item.cc %>cc</h4>
-                <h4>年式：<%= item.year %></h4>
-                <h4>走行距離：<%= item.km %>km</h4>
-            </div>
+            <table class='table'>
+                <tr>
+                    <th>排気量</th>
+                    <th>年式</th>
+                    <th>走行距離</th>
+                </tr>
+                <tr>
+                    <td><%= item.cc %>cc</td>
+                    <td><%= item.year %>年</td>
+                    <td><%= item.km %>km</td>
+                </tr>
+            </table>
+            <h4><%= render 'user/favorites/fa', item: item %></h4>
         </div>
     </div>
-    <div class='row border-bottom border-secondary'>
+    <div class='row my-2 border-bottom border-secondary'>
         <div class='col-md-8'>
             <%= link_to user_user_path(item) do %>
-            <h4><%= item.user.last_name %></h4>
+            <h4>販売者：<%= item.user.last_name %></h4>
             <% end %>
         </div>
         <div class='col-md-4'>
