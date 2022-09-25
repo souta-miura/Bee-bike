@@ -1,9 +1,9 @@
 <% if item.favorited_by?(current_user) %>
-    <%= link_to user_item_favorites_path(item), method: :delete do %>
-    お気に入り解除<%= item.favorites.count %>
+    <%= link_to user_item_favorites_path(item), class: 'btn btn-dark', method: :delete do %>
+    お気に入り解除　<%= item.favorites.count %>
     <% end %>
 <% else %>
-    <%= link_to user_item_favorites_path(item), method: :post do %>
-    お気に入り<%= item.favorites.count %>
+    <%= link_to user_item_favorites_path(item), class: 'btn btn-danger', method: :post do %>
+    お気に入り　<%= item.favorites.count %>
     <% end %>
 <% end %>
