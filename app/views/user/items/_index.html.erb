@@ -8,7 +8,7 @@
         </div>
     </div>
     <% items.each do |item| %>
-    <div class='row border-top border-bottom border-secondary'>
+    <div class='row py-2 border-top border-bottom border-secondary'>
         <div class='col-md-3'>
             <%= link_to user_item_path(item) do %>
             <% if item.image.attached? %>
@@ -20,6 +20,7 @@
         </div>
         <div class='col-md-5'>
             <%= link_to user_item_path(item) do %>
+            <h4><%= item.maker.name %></h4>
             <h2><%= item.name %></h2>
             <% end %>
             <div><%= item.description %></div>
@@ -35,7 +36,7 @@
             <div><%= render 'user/favorites/fa', item: item %></div>
         </div>
     </div>
-    <div class='row border-bottom border-secondary'>
+    <div class='row my-2 border-bottom border-secondary'>
         <div class='col-md-8'>
             <%= link_to user_user_path(item) do %>
             <h4><%= item.user.last_name %></h4>
