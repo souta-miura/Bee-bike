@@ -15,8 +15,9 @@
             
             <% end %>
             <% end %>
-            <p class='card-title'><%= item.name %></p>
-            <p class='card-title'>本体価格：<%= (item.price*1.1).round.to_i %>円（税込）</p>
+            <div class='card-text'><%= item.maker.name %></div>
+            <div class='card-text'><%= item.name %></div>
+            <div class='card-text'>本体価格：<font size='6' color='#ff0000'><%= (item.price*1.1*0.0001).round.to_i %></font>万円（税込）</div>
             </div>
             </div>
             <% end %>
