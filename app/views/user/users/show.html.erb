@@ -13,19 +13,19 @@
         </div>
         <% end %>
         <div class='col-md-4'>
-            <p><%=link_to"お気に入り記事",favorites_user_user_path(@user) %></p>
+            <p><%=link_to"お気に入りバイク一覧",favorites_user_user_path(@user) %></p>
         </div>
     </div>
     <% if @user == current_user %>
     <div class='row'>
         <div class='col-md-2'>
             <%= link_to user_user_followings_path(@user.id) do %>
-            フォロー：<%= @user.followings.count %>
+            フォロー数：<%= @user.followings.count %>
             <% end %>
         </div>
         <div class='col-md-2'>
             <%= link_to user_user_followers_path(@user.id) do %>
-            フォロワー：<%= @user.followers.count %>
+            フォロワー数：<%= @user.followers.count %>
             <% end %>
         </div>
     </div>

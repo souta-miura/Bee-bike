@@ -1,4 +1,55 @@
-いいね一覧
-<% @favorite_items.each do |item|%>
-<%= item.name %>
-<% end %>
+<div class='container'>
+    <h4>お気に入りバイク</h4>
+    <% if @favorite_items.items.exists? %>
+    <% @favorite_items.each do |item|%>
+    <div class='row py-2 border-top border-bottom border-secondary'>
+        <div class='col-md-3'>
+            <%= link_to user_item_path(item) do %>
+            <% if item.image.attached? %>
+            <%= image_tag item.image, size: "200x200" %>
+            <% else %>
+            <%= image_tag 'assets/images/ネイキッド.png', size: "200x200" %>
+            <% end %>
+            <% end %>
+        </div>
+        <div class='col-md-5'>
+            <%= link_to user_item_path(item) do %>
+            <h4><%= item.maker.name %></h4>
+            <h2><%= item.name %></h2>
+            <% end %>
+            <div><%= item.description %></div>
+            <div>税込価格</div>
+            <font size='7' color='#ff0000'><%= (item.price*1.1).round.to_i %></font>円
+        </div>
+        <div class='col-md-4'>
+            <table class='table'>
+                <tr>
+                    <th>排気量</th>
+                    <th>年式</th>
+                    <th>走行距離</th>
+                </tr>
+                <tr>
+                    <td><%= item.cc %>cc</td>
+                    <td><%= item.year %>年</td>
+                    <td><%= item.km %>km</td>
+                </tr>
+            </table>
+            <h4><%= render 'user/favorites/fa', item: item %></h4>
+        </div>
+    </div>
+    <div class='row my-2 border-bottom border-secondary'>
+        <div class='col-md-8'>
+            <%= link_to user_user_path(item) do %>
+            <h4>販売者：<%= item.user.last_name %></h4>
+            <% end %>
+        </div>
+        <div class='col-md-4'>
+            連絡先・電話番号
+            <%= item.user.phone_number %>
+        </div>
+    </div>
+    <% end %>
+    <% else %>
+    <h4>お気に入りのバイクはありません</h4>
+    <% end %>
+</div>
