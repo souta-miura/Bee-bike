@@ -9,6 +9,11 @@
                     <% end %>
                 </li>
                 <li>
+                    <%= link_to user_users_path,class: 'nav-link text-white' do %>
+                    <i class="fa-solid fa-users"></i> ユーザーを探す
+                    <% end %>
+                </li>
+                <li>
                     <%= link_to user_user_path(current_user.id),class: 'nav-link text-white' do %>
                     <i class='fa fa-user'></i> <%= current_user.last_name %>さんのマイページ
                     <% end %>

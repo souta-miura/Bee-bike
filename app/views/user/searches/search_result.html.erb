@@ -3,5 +3,5 @@
   <%= render 'user/items/index', items: @records %>
 <% elsif @model == 'user' %>
 	<h3>Users search for "<%= @content %>"</h3>
-  <%= render 'users/index', users: @records %>
+  <%= render 'user/users/index', users: @records %>
 <% end %>
