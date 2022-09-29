@@ -2,4 +2,9 @@
     <div class='row'>
         <h4>ユーザー</h4>
     </div>
+    <div class='row'>
+        <% users.each do |user| %>
+        <%= user.last_name %>
+        <% end %>
+    </div>
 </div>
