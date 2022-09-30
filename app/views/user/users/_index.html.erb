@@ -1,0 +1,17 @@
+<div class='container'>
+    <div class='row'>
+        <div class='col-md-8'>
+            <h2>会員一覧</h2>
+        </div>
+        <div class='col-md-4 text-right'>
+            <h1><span style='color:#ff4500;'><%= User.count %></span>台</h1>
+        </div>
+    </div>
+    <% users.each do |user| %>
+    <div class='row'>
+        <%= link_to user_user_path(user) do %>
+        <%= user.last_name %>
+        <% end %>
+    </div>
+    <% end %>
+</div>
