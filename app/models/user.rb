@@ -30,9 +30,9 @@ class User < ApplicationRecord
   
   def self.search_for(content, method)
     if method == 'perfect'
-      User.where(name: content)
+      User.where(last_name: content)
     else
-      User.where('name LIKE ?', '%' + content + '%')
+      User.where('last_name LIKE ?', '%' + content + '%')
     end
   end
   
