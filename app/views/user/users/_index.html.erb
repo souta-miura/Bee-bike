@@ -9,9 +9,11 @@
     </div>
     <% users.each do |user| %>
     <div class='row'>
-        <%= link_to user_user_path(user) do %>
-        <%= user.last_name %>
-        <% end %>
+        <table class='table'>
+            <%= link_to user_user_path(user) do %>
+            <%= user.last_name %>
+            <% end %>
+        </table>
     </div>
     <% end %>
 </div>
