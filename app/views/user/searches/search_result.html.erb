@@ -1,7 +1,9 @@
-<% if @model == 'item' %>
-	<h3>"<%= @content %>"の検索結果</h3>
-  <%= render 'user/items/index', items: @records %>
-<% elsif @model == 'user' %>
-	<h3>"<%= @content %>"の検索結果</h3>
-  <%= render 'user/users/index', users: @records %>
-<% end %>
+<div class='container'>
+    <% if @model == 'item' %>
+	    <h3>"<%= @content %>"の検索結果</h3>
+      <%= render 'user/items/index', items: @records %>
+    <% elsif @model == 'user' %>
+	    <h3>"<%= @content %>"の検索結果</h3>
+      <%= render 'user/users/index', users: @records %>
+    <% end %>
+</div>

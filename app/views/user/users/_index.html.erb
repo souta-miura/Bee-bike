@@ -1,19 +1,32 @@
-<div class='container'>
-    <div class='row'>
-        <div class='col-md-8'>
-            <h2>会員一覧</h2>
-        </div>
-        <div class='col-md-4 text-right'>
-            <h1><span style='color:#ff4500;'><%= User.count %></span>人</h1>
-        </div>
+<div class='row'>
+    <div class='col-md-8'>
+        <h2>会員一覧</h2>
     </div>
-    <% users.each do |user| %>
-    <div class='row'>
-        <table class='table'>
-            <%= link_to user_user_path(user) do %>
-            <%= user.last_name %>
-            <% end %>
-        </table>
+    <div class='col-md-4 text-right'>
+        <h1><span style='color:#ff4500;'><%= User.count %></span>人</h1>
     </div>
-    <% end %>
 </div>
+<% users.each do |user| %>
+<div class='row'>
+    <table class='table'>
+        <tr>
+            <th>
+                <%= link_to user_user_path(user) do %>
+                <%= user.last_name %>
+                <% end %>
+            </th>
+            <th>
+                <% if user != current_user %>
+                <div class='col-md-4'>
+                <% if current_user.following?(user) %>
+                  <%= link_to "フォロー外す", user_user_relationships_path(user.id), class: 'btn btn-secondary', method: :delete %>
+                <% else %>
+                  <%= link_to "フォローする", user_user_relationships_path(user.id), class: 'btn btn-primary', method: :post %>
+                <% end %>
+                </div>
+                <% end %>
+            </th>
+        </tr>
+    </table>
+</div>
+<% end %>
