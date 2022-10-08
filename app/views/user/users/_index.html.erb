@@ -6,30 +6,35 @@
         <h1><span style='color:#ff4500;'><%= User.count %></span>人</h1>
     </div>
 </div>
-<% users.each do |user| %>
 <div class='row'>
     <table class='table'>
-        <tr>
-            <th>
-                ID <%= user.id %>
-            </th>
-            <th>
-                <%= link_to user_user_path(user) do %>
-                <%= user.last_name %>
-                <% end %>
-            </th>
-            <th>
-                <% if user != current_user %>
-                <div class='col-md-4'>
-                <% if current_user.following?(user) %>
-                  <%= link_to "フォロー外す", user_user_relationships_path(user.id), class: 'btn btn-secondary', method: :delete %>
-                <% else %>
-                  <%= link_to "フォローする", user_user_relationships_path(user.id), class: 'btn btn-primary', method: :post %>
-                <% end %>
-                </div>
-                <% end %>
-            </th>
-        </tr>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>名前</th>
+                <th></th>
+            </tr>
+        </thead>
+        <% users.each do |user| %>
+        <tbody>
+            <tr>
+                <td><%= user.id %></td>
+                <td>
+                    <%= link_to user_user_path(user) do %>
+                    <%= user.last_name %>
+                    <% end %>
+                </td>
+                <td>
+                    <% if user != current_user %>
+                    <% if current_user.following?(user) %>
+                      <%= link_to "フォロー外す", user_user_relationships_path(user.id), class: 'btn btn-secondary', method: :delete %>
+                    <% else %>
+                      <%= link_to "フォローする", user_user_relationships_path(user.id), class: 'btn btn-primary', method: :post %>
+                    <% end %>
+                    <% end %>
+                </td>
+            </tr>
+        </tbody>
+        <% end %>
     </table>
 </div>
-<% end %>
