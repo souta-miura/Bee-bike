@@ -18,10 +18,10 @@
         <% users.each do |user| %>
         <tbody>
             <tr>
-                <td><%= user.id %></td>
+                <td>会員ID：<%= user.id %></td>
                 <td>
                     <%= link_to user_user_path(user) do %>
-                    <%= user.last_name %>
+                    名前：<%= user.last_name %>
                     <% end %>
                 </td>
                 <td>
