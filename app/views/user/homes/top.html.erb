@@ -32,7 +32,7 @@
             <% @makers.each do |maker| %>
             <div class='col-md-6'>
                 <%= link_to user_maker_path(maker),class: 'outline-primary' do %>
-                <h4>・<%= maker.name %><%= @makers.count %></h4>
+                <h4>・<%= maker.name %></h4>
                 <% end %>
             </div>
             <% end %>
@@ -44,7 +44,7 @@
             <% @genres.each do |genre| %>
             <div class='col-md-6'>
                 <%= link_to user_genre_path(genre),class: 'outline-primary' do %>
-                <h4>・<%= genre.name %></h4>
+                <h4>・<%= genre.name %><%= genre.items.count %></h4>
                 <% end %>
             </div>
             <% end %>
