@@ -56,7 +56,7 @@
             <% @cc_classes.each do |cc_class| %>
             <div class='col-md-6'>
                 <%= link_to user_cc_class_path(cc_class),class: 'outline-primary' do %>
-                <h4>・<%= cc_class.name %><%= cc_class.items.count %></h4>
+                <h4>・<%= cc_class.name %>：<%= cc_class.items.count %>台</h4>
                 <% end %>
             </div>
             <% end %>
