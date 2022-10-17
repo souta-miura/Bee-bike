@@ -77,25 +77,27 @@
         <div class='col-md-7 offset-md-1'>
             <h4><%= @user.last_name %>さんの出品リスト</h4>
         <% @items.each do |item| %>
-        <div class='col'>
+        <div class='d-flex flex-wrap'>
             <%= link_to user_item_path(item) do %>
-            <h2>
+            <div class='col'>
+                <h2>
                 <%= item.name %>
                 <% if item.user_id == current_user.id %>
                 <%= link_to '編集', edit_user_item_path(item), class: "btn btn-sm btn-success edit_user_item_path_#{item.id}" %>
                 <%= link_to '削除', user_item_path(item), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_user_item_#{item.id}"%>
                 <% end %>
-            </h2>
-            <% if item.image.attached? %>
-            <%= image_tag item.image, size: "300x300" %>
-            <% else %>
-            <%= image_tag 'no_image', size: "300x300" %>
+                </h2>
+                <% if item.image.attached? %>
+                <%= image_tag item.image, size: "300x300" %>
+                <% else %>
+                <%= image_tag 'no_image', size: "300x300" %>
+                <% end %>
+            </div>
             <% end %>
-            <% end %>
-        </div>
-        <div class='col'>
-            <div>本体価格：<h2 style='color:#ff4500;'><%= (item.price*1.1).round.to_i %></h2>円（税込）</div>
-            <div>車両説明：<%= item.description %></div>
+            <div class='col'>
+                <div>本体価格：<h2 style='color:#ff4500;'><%= (item.price*1.1).round.to_i %></h2>円（税込）</div>
+                <div>車両説明：<%= item.description %></div>
+            </div>
         </div>
         <% end %>
         </div>
