@@ -77,7 +77,7 @@
         <div class='col-md-7 offset-md-1'>
             <h4><%= @user.last_name %>さんの出品リスト</h4>
         <% @items.each do |item| %>
-        <div class='d-flex flex-wrap'>
+        <div class='d-flex flex-wrap border-top'>
             <%= link_to user_item_path(item) do %>
             <div class='col'>
                 <h2>
