@@ -13,7 +13,11 @@
         </div>
         <% end %>
         <div class='col-md-4'>
-            <p><%= link_to favorites_user_user_path(@user) do %><%= @favorite_items.count %></p>
+            <p>
+                <%= link_to favorites_user_user_path(@user) do %>
+                いいね一覧（<%= @favorite_items.count %>）
+                <% end %>
+            </p>
         </div>
     </div>
     <% if @user == current_user %>
