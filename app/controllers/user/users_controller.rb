@@ -8,6 +8,8 @@ class User::UsersController < ApplicationController
   def show
     @user=User.find(params[:id])
     @items=@user.items
+    favorites=Favorite.where(user_id: @user.id).pluck(:item_id)
+    @favorite_items=Item.find(favorites)
   end
 
   def edit
