@@ -15,6 +15,7 @@
                 <tr>
                     <td><%= user.id %></td>
                     <td><%= link_to admin_user_path(user) do %><%= user.last_name %><%= user.first_name %><% end %></td>
+                    <td>出品数：<%= user.items.count %></td>
                     <td><%= user.email %></td>
                     <td>
                         <% if user.is_deleted == false %>
