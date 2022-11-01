@@ -42,6 +42,9 @@
                     <% end %>
                 </td>
             </tr>
+            <tr>
+                <td>出品数：<%= user.items.count %>点</td>
+            </tr>
         </table>
         <%= link_to '編集する', edit_admin_user_path(@user), class: 'btn btn-success' %>
     </div>
