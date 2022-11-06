@@ -4,7 +4,7 @@
   <% else %>
     <%= image_tag 'no_image', size: "200x200" %>
   <% end %>
-  <label>
+  <table class='table table-bordered'>
     <tr>
       <td>
         商品名
@@ -35,4 +35,4 @@
         <%= link_to '削除する', admin_item_path(@item), method: :delete, class: 'btn btn-danger' %>
       </td>
     </tr>
-  </label>
+  </table>
