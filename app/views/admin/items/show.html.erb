@@ -5,17 +5,37 @@
     <%= image_tag 'no_image', size: "200x200" %>
   <% end %>
   <table class='table table-bordered'>
+    <thead>
+      <tr>
+        <th>メーカー</th>
+        <th>商品名</th>
+        <th>商品説明</th>
+        <th>年式（年）</th>
+        <th>車両タイプ</th>
+        <th>排気量（cc）</th>
+        <th>税込価格</th>
+        <th>販売ステータス</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= @item.maker %></td>
+        <td><%= @item.name %></td>
+        <td></td>
+      </tr>
+    </tbody>
     <tr>
+      <th></th>
       <td>
-        商品名
         <%= @item.name %>
       </td>
+      
       <td>
-        商品説明
+        
         <%= @item.description %>
       </td>
       <td>
-        年式（年）
+        
         <%= @item.year %>
       </td>
       <td>
@@ -23,7 +43,7 @@
         <%= @item.genre.name if @item.genre %>
       </td>
       <td>
-        税込価格
+        
         ¥<%= (@item.price*1.1).round.to_i %>
       </td>
       <td>
