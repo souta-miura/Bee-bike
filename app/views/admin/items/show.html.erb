@@ -1,62 +1,61 @@
-<h3>商品詳細</h3>
-<% if @item.image.attached? %>
-    <%= image_tag @item.image, size: "200x200" %>
-  <% else %>
-    <%= image_tag 'no_image', size: "200x200" %>
-  <% end %>
-  <table class='table table-bordered'>
-    <thead>
-      <tr>
-        <th>メーカー</th>
-        <th>商品名</th>
-        <th>商品説明</th>
-        <th>年式（年）</th>
-        <th>車両タイプ</th>
-        <th>排気量（cc）</th>
-        <th>税込価格</th>
-        <th>販売ステータス</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><%= @item.maker %></td>
-        <td><%= @item.name %></td>
-        <td></td>
-      </tr>
-    </tbody>
-    <tr>
-      <th></th>
-      <td>
-        <%= @item.name %>
-      </td>
-      
-      <td>
-        
-        <%= @item.description %>
-      </td>
-      <td>
-        
-        <%= @item.year %>
-      </td>
-      <td>
-        ジャンル
-        <%= @item.genre.name if @item.genre %>
-      </td>
-      <td>
-        
-        ¥<%= (@item.price*1.1).round.to_i %>
-      </td>
-      <td>
-        販売ステータス
-        <% if @item.sale_status=='販売中' %>
-        <div class='label text-success'>販売中</div>
-        <% else %>
-        <div class='label text-secondary'>販売停止中</div>
-        <% end %>
-      </td>
-      <td>
-        <%= link_to '編集する', edit_admin_item_path(@item), class: 'btn btn-success' %>
-        <%= link_to '削除する', admin_item_path(@item), method: :delete, class: 'btn btn-danger' %>
-      </td>
-    </tr>
-  </table>
+<div class='container'>
+  <div class='row'>
+    <div class='col-md-6'>
+      <h3>商品詳細</h3>
+      <% if @item.image.attached? %>
+      <%= image_tag @item.image, size: "500x500" %>
+      <% else %>
+      <%= image_tag 'no_image', size: "500x500" %>
+      <% end %>
+    </div>
+    <div class='col-md-5'>
+      <table class='table table-bordered'>
+        <tr>
+          <th>メーカー</th>
+          <th><%= @item.maker.name %></th>
+        </tr>
+        <tr>
+          <th>商品名</th>
+          <th><%= @item.name %></th>
+        </tr>
+        <tr>
+          <th>商品説明</th>
+          <th><%= @item.description %></th>
+        </tr>
+        <tr>
+          <th>年式（年）</th>
+          <th><%= @item.year %></th>
+        </tr>
+        <tr>
+          <th>車両タイプ</th>
+          <th><%= @item.genre.name %></th>
+        </tr>
+        <tr>
+          <th>排気量（cc）</th>
+          <th><%= @item.cc %></th>
+        </tr>
+        <tr>
+          <th>税込価格</th>
+          <th><%= (@item.price*1.1).round.to_i %></th>
+        </tr>
+        <tr>
+          <th>販売ステータス</th>
+          <th>
+            <% if @item.sale_status=='販売中' %>
+            <div class='label text-success'>販売中</div>
+            <% else %>
+            <div class='label text-secondary'>販売停止中</div>
+            <% end %>
+          </th>
+        </tr>
+        <tr>
+          <th><%= link_to '編集する', edit_admin_item_path(@item), class: 'btn btn-success' %></th>
+          <th><%= link_to '削除する', admin_item_path(@item), method: :delete, class: 'btn btn-danger' %></th>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+  
