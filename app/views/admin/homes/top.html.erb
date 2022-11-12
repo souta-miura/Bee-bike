@@ -1,26 +1,62 @@
 <div class='container'>
-    <h1 class='text-center'>注文履歴一覧</h1>
-        <div class='row'>
-        <table class='table'>
-            <thead>
-                <tr>
-                    <th>購入日時</th>
-                    <th>購入者</th>
-                    <th>注文個数</th>
-                    <th>注文ステータス</th>
-                </tr>
-            </thead>
-            <% @orders.each do |order| %>
-            <tbody>
-                <tr>
-                    <td><%= link_to order.created_at.strftime('%Y-%m-%d %H:%M:%S'), admin_order_path(order.id) %></td>
-                    <td><%= order.receriver_name %></td>
-                    <td><%= order.id %></td>
-                    <td><%= order.order_status %></td>
-                </tr>
-            </tbody>
+    <div class='text-center'>
+        <h1 class='font-weight-bolder'>バイクを探す</h1>
+    </div>
+    <div class='mt-4'><h3 class='font-weight-bolder'><i class="fa-solid fa-motorcycle"></i> 新着バイク　<%= link_to '一覧を見る', user_items_path %></h3></div>
+    <div class='row'>
+        <div class='d-flex flex-wrap'>
+            <% @item.each do |item| %>
+            <div class="card mx-2 shadow-lg">
+            <div class='card-body'>
+            <%= link_to user_item_path(item) do %>
+            <% if item.image.attached? %>
+            <%= image_tag item.image, size: "200x200" %>
+            <% else %>
+            <%= image_tag 'assets/images/ネイキッド.png', size: "200x200" %>
             <% end %>
-        </table>
-        <%= paginate @orders %>
+            <% end %>
+            <div class='card-text'><%= item.maker.name %></div>
+            <div class='card-text'><%= item.name %></div>
+            <div class='card-text'>本体価格：<font size='6' color='#ff0000'><%= (item.price*1.1*0.0001).round.to_i %></font>万円（税込）</div>
+            </div>
+            </div>
+            <% end %>
+        </div>
+    </div>
+    <div class='mt-4'><h3 class='font-weight-bolder'><i class="fa-solid fa-motorcycle"></i> メーカーから探す</h3></div>
+    <div class='row'>
+        <div class='d-flex flex-wrap'>
+            <% @makers.each do |maker| %>
+            <div class='col-md-6'>
+                <%= link_to user_maker_path(maker),class: 'outline-primary' do %>
+                <h4>・<%= maker.name %>：<%= maker.items.count %>台</h4>
+                <% end %>
+            </div>
+            <% end %>
+        </div>
+    </div>
+    <div class='mt-4'><h3 class='font-weight-bolder'><i class="fa-solid fa-motorcycle"></i> タイプから探す</h3></div>
+    <div class='row'>
+        <div class='d-flex flex-wrap'>
+            <% @genres.each do |genre| %>
+            <div class='col-md-6'>
+                <%= link_to user_genre_path(genre),class: 'outline-primary' do %>
+                <h4>・<%= genre.name %>：<%= genre.items.count %>台</h4>
+                <% end %>
+            </div>
+            <% end %>
+        </div>
+    </div>
+    <div class='mt-4'><h3 class='font-weight-bolder'><i class="fa-solid fa-motorcycle"></i> 排気量から探す</h3></div>
+    <div class='row'>
+        <div class='d-flex flex-wrap'>
+            <% @cc_classes.each do |cc_class| %>
+            <div class='col-md-6'>
+                <%= link_to user_cc_class_path(cc_class),class: 'outline-primary' do %>
+                <h4>・<%= cc_class.name %>：<%= cc_class.items.count %>台</h4>
+                <% end %>
+            </div>
+            <% end %>
+        </div>
     </div>
 </div>
