@@ -1,6 +1,8 @@
 class Admin::HomesController < ApplicationController
   def top
-    @orders=Order.all
-    @orders=Order.all.page(params[:page]).per(10)
+    @item=Item.limit(4).order("created_at DESC")
+    @genres=Genre.all
+    @makers=Maker.all
+    @cc_classes=CcClass.all
   end
 end
