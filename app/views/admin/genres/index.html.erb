@@ -16,7 +16,7 @@
             <tr>
                 <th>管理.No</th>
                 <th>タイプ名</th>
-                <th>登録数</th>
+                <th>登録台数</th>
                 <th></th>
                 <th><h4>現在<span style='color:#ff4500;'><%= Genre.count %></span>種</h4></th>
             </tr>
@@ -26,6 +26,7 @@
             <tr>
                 <td><%= genre.id %></td>
                 <td><%= genre.name %></td>
+                <td><%= genre.items.count %>台</td>
                 <td><%= link_to '編集する', edit_admin_genre_path(genre.id), class: 'btn btn-success' %></td>
                 <td><%= link_to '削除する', admin_genre_path(genre.id), method: :delete, class: 'btn btn-danger' %></td>
             </tr>
