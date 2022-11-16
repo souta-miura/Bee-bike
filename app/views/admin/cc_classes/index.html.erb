@@ -16,6 +16,7 @@
             <tr>
                 <th>管理.No</th>
                 <th>排気量</th>
+                <th>登録台数</th>
                 <th></th>
                 <th><h4>現在<span style='color:#ff4500;'><%= CcClass.count %></span>クラス</h4></th>
             </tr>
@@ -25,6 +26,7 @@
             <tr>
                 <td><%= cc_class.id %></td>
                 <td><%= cc_class.name %></td>
+                <td><%= cc_class.items.count %>台</td>
                 <td><%= link_to '編集する', edit_admin_cc_class_path(cc_class.id), class: 'btn btn-success' %></td>
                 <td><%= link_to '削除する', admin_cc_class_path(cc_class.id), method: :delete, class: 'btn btn-danger' %></td>
             </tr>
