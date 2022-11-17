@@ -31,7 +31,7 @@
                 <% elsif admin_signed_in? %>
                 <li><%= link_to '商品一覧', admin_items_path,class: 'nav-link text-white' %></li>
                 <li><%= link_to '会員一覧', admin_users_path,class: 'nav-link text-white' %></li>
-                <li><%= link_to '注文履歴一覧', admin_path,class: 'nav-link text-white' %></li>
+                <li><%= link_to '注文履歴一覧', admin_orders_path,class: 'nav-link text-white' %></li>
                 <li><%= link_to '車体タイプ条件管理', admin_genres_path,class: 'nav-link text-white' %></li>
                 <li><%= link_to 'メーカー条件管理', admin_makers_path,class: 'nav-link text-white' %></li>
                 <li><%= link_to '排気量条件管理', admin_cc_classes_path,class: 'nav-link text-white' %></li>

@@ -53,7 +53,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users, only: [:index, :show, :edit, :update]
     
-    resources :oeders, only: [:index, :show]
+    resources :orders, only: [:index, :show]
     
     resources :genres, only: [:index, :create, :edit, :update, :destroy]
     resources :makers, only: [:index, :create, :edit, :update, :destroy]
