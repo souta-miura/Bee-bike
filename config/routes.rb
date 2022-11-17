@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   
+  namespace :admin do
+    get 'orders/index'
+    get 'orders/show'
+  end
   root 'user/homes#top'
   get 'admin'=>'admin/homes#top'
   
@@ -48,6 +52,8 @@ Rails.application.routes.draw do
   #管理者用
   namespace :admin do
     resources :users, only: [:index, :show, :edit, :update]
+    
+    resources :oeders, only: [:index, :show]
     
     resources :genres, only: [:index, :create, :edit, :update, :destroy]
     resources :makers, only: [:index, :create, :edit, :update, :destroy]
